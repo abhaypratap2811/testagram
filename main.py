@@ -1,5 +1,6 @@
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 from uuid import uuid4
 from db.schema import Session,User,Post,Comment,Like
@@ -7,6 +8,8 @@ from utils.user_util import  *
 from config_data.config import HOST,PORT
 app = Flask(__name__)
 sql_session=Session()
+
+# CORS(app)
 
 @app.route('/register', methods=['POST'])
 def register():
